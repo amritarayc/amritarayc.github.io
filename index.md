@@ -1,7 +1,6 @@
-markdown
+Amrita Raychaudhury
 ---
-layout:home
-title: Welcome
+Introduction
 ---
 
-Hello! This is my GitHub Pages site!
+Hello! It's me woof woof!!
