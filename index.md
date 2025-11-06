@@ -1,3 +1,4 @@
+markdown
 ---
 layout:home
 title: Welcome
