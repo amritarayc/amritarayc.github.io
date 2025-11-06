@@ -1,6 +1,3 @@
-#Introduction
-
-⁠ html
 <div style="display: flex; align-items: center; gap: 20px;">
   <img src="image-3.jpg" alt="My photo" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
   <div>
@@ -9,12 +6,12 @@
   </div>
 </div>
 
-#Projects
+Projects
 
 - ABC
 - DEF
 - GHI
 
-#Contact
-- Email: [amrita.raychaudhury@rwth-aachen.de]
-- LinkedIn: [https://www.linkedin.com/in/amritaraychaudhury/]
+Contact
+- [My email](amrita.raychaudhury@rwth-aachen.de)
+- [My LinkedIn](https://www.linkedin.com/in/amritaraychaudhury/)
