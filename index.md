@@ -1,24 +1,33 @@
-<div style="display: flex; align-items: center; gap: 40px;">
-  <img src="image-3.jpg" alt="My photo" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
-  <div>
-    <h3>Hi,</h3>
-    <p>I completed my MSc. from RWTH Aachen in Aug 2025, and built a passion for Digital Twins, combining physical models with data-driven models, AI, sustainable tech and a special interest in Project.
-      This website is a brief insight into me! I will use this space to share projects, experiences and thoughts. Feel free to reach out to me!</p>
+---
+layout: default
+body_class: home
+---
+<section class="welcome" aria-labelledby="welcome-title">
+  <span class="eyebrow">AMRITA’S DESK</span>
+  <h1 id="welcome-title">A little world of<br>work & <em>wonder.</em></h1>
+  <p>Projects, stories, and things that caught my curiosity.</p>
+</section>
+<section class="desk" aria-label="Explore my desk">
+  <div class="plant" aria-hidden="true">{% include plant.svg %}</div>
+  {% include cozy.html %}
+  <div class="desk-top">
+  {% for space in site.data.spaces limit:2 %}
+    <a class="desk-object object-{{ space.object }}" href="{{ space.url | relative_url }}">
+      {% include object.html type=space.object %}
+      <span class="object-title">{{ space.title }} {% include arrow.html %}</span>
+      <span class="object-subtitle">{{ space.subtitle }}</span>
+    </a>
+  {% endfor %}
   </div>
-</div>
-
-**Projects**
-
-1. Digital Twin Research
-
-*Tech stack:* Python, Julia, Modelica, scikit-learn, matplotlib, TensorFlow, Windows, Linux
-
-- Modelled the drying section of the paper manufacturing process in an Object Oriented format by using and modifying a previously developed Modelica library (DryLib) and by modelling environmental parameters from (Paper Link) to have an energy consumption estimation for different scenarios and setups of paper drying.
-- Exported FMUs of 6 different configurations of the drying section, according to use cases specified by partner companies.
-- Run simulations with CVODE solver on these FMUs using Python (omsimulator package used) and Julia (FMI.jl package used).
-
-Project Info: [Modellfabrik Papier](https://modellfabrikpapier.de)
-
-
-- DEF
-- GHI
+  <div class="desk-divider" id="outside-work"><span>A FEW THINGS OUTSIDE WORK</span>{% include sprig.html %}</div>
+  <div class="desk-collections">
+  {% for space in site.data.spaces offset:2 %}
+    <a class="desk-object object-{{ space.object }}" href="{{ space.url | relative_url }}">
+      {% include object.html type=space.object %}
+      <span class="object-title">{{ space.title }} {% include arrow.html %}</span>
+      <span class="object-subtitle">{{ space.subtitle }}</span>
+    </a>
+  {% endfor %}
+  </div>
+  <p class="desk-note handwritten">A growing collection, at my own pace.</p>
+</section>

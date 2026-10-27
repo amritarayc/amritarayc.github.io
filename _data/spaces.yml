@@ -1,0 +1,42 @@
+- key: work
+  title: Work & curiosities
+  subtitle: Questions worth following
+  url: /work/
+  object: notebook
+  number: '01'
+- key: about
+  title: A little about me
+  subtitle: The person behind the desk
+  url: /about/
+  object: portrait
+  number: '02'
+- key: travel
+  title: Travel journal
+  subtitle: Places, detours & little discoveries
+  url: /travel/
+  object: postcards
+  number: '03'
+- key: art
+  title: Art sketchbook
+  subtitle: Lines, colours & small stories
+  url: /art/
+  object: sketchbook
+  number: '04'
+- key: books
+  title: Bookshelf
+  subtitle: Between the pages
+  url: /books/
+  object: books
+  number: '05'
+- key: recipes
+  title: Recipe box
+  subtitle: Something good to come home to
+  url: /recipes/
+  object: recipes
+  number: '06'
+- key: hobbies
+  title: The hobby cupboard
+  subtitle: Brief obsessions welcome here
+  url: /hobbies/
+  object: basket
+  number: '07'

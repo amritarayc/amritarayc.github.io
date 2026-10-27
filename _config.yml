@@ -1,6 +1,52 @@
 title: Amrita Raychaudhury
-description: | 
-  Motivated for industrial innovation and digital transformation
-  📧 [Email](amrita.raychaudhury@rwth-aachen.de)  🔗 [LinkedIn](https://www.linkedin.com/in/amritaraychaudhury/)  📍 Aachen, Germany
-
-theme: jekyll-theme-CAYMAN
+description: A little world of work, stories, and things that caught my curiosity.
+url: https://amritarayc.github.io
+baseurl: ""
+markdown: kramdown
+collections:
+  travels:
+    output: true
+    permalink: /travel/:name/
+  artwork:
+    output: true
+    permalink: /art/:name/
+  books:
+    output: true
+    permalink: /books/:name/
+  recipes:
+    output: true
+    permalink: /recipes/:name/
+  hobbies:
+    output: true
+    permalink: /hobbies/:name/
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: travels
+    values:
+      layout: entry
+  - scope:
+      path: ""
+      type: artwork
+    values:
+      layout: entry
+  - scope:
+      path: ""
+      type: books
+    values:
+      layout: entry
+  - scope:
+      path: ""
+      type: recipes
+    values:
+      layout: entry
+  - scope:
+      path: ""
+      type: hobbies
+    values:
+      layout: entry
+exclude: [README.md, CONTENT_GUIDE.md]

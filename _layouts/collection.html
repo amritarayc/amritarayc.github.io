@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<div class="page-shell">
+<a class="back-link" href="{{ '/#outside-work' | relative_url }}">← Back to the desk</a>
+<div class="collection-intro">
+<header class="page-heading"><span class="eyebrow">{{ page.eyebrow }}</span><h1>{{ page.title }}</h1><p>{{ page.description }}</p></header>
+{% include object.html type=page.object %}
+</div>
+<nav class="section-nav" aria-label="Outside work collections">{% for space in site.data.spaces offset:2 %}<a href="{{ space.url | relative_url }}" {% if page.section == space.key %}aria-current="page"{% endif %}>{{ space.title }}</a>{% endfor %}</nav>
+{% assign entries = site[page.entries] | sort: 'date' | reverse %}
+{% if entries.size > 0 %}
+<div class="filter-toolbar"><label for="collection-search">Find something in this collection</label><input id="collection-search" type="search" placeholder="Search titles, places, little details…" data-collection-search></div>
+<div class="entry-grid">{% for entry in entries %}<a class="entry-card" href="{{ entry.url | relative_url }}" data-entry>
+{% if entry.image %}<img src="{{ entry.image | relative_url }}" alt="{{ entry.image_alt | default: entry.title | escape }}" loading="lazy">{% else %}<div class="entry-blank" aria-hidden="true">✳︎</div>{% endif %}
+{% if entry.place or entry.author or entry.status %}<span class="entry-meta">{{ entry.place | default: entry.author | default: entry.status | escape }}</span>{% endif %}
+<h2>{{ entry.title | escape }}</h2><p>{{ entry.summary | escape }}</p></a>{% endfor %}</div><p class="search-empty" data-search-empty hidden role="status">Nothing here matches yet. Try another word.</p>
+{% else %}
+<section class="empty-collection"><div><span class="eyebrow">A NEW PAGE</span><h2>{{ page.empty_title }}</h2><p>{{ page.empty_text }}</p></div><span class="empty-flower" aria-hidden="true">✳︎</span></section>
+{% endif %}
+</div>
