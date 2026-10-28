@@ -124,3 +124,15 @@ photos:
 ```
 
 Replace the cover with your own picture any time. Optional photos and notes are omitted or left empty until supplied. Content updates are made through these files; the public site has no visitor upload or editing form.
+
+For recipes with multiple ingredient sections, replace `ingredients` with grouped lists. Each item still gets its own checkbox:
+
+```yaml
+ingredient_groups:
+  - name: For the main dish
+    items:
+      - "300 g ingredient"
+  - name: For the sauce
+    items:
+      - "50 g ingredient"
+```

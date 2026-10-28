@@ -24,11 +24,16 @@ layout: default
   <section class="ingredients recipe-ingredients" aria-labelledby="ingredients-heading">
     <div class="recipe-section-heading"><h2 id="ingredients-heading">Ingredients</h2><span class="handwritten">a little kitchen checklist</span></div>
     {% if page.measurement_note %}<p class="measurement-note">{{ page.measurement_note | escape }}</p>{% endif %}
-    <ul class="ingredient-checklist">
-      {% for ingredient in page.ingredients %}
-      <li><label for="ingredient-{{ forloop.index }}"><input id="ingredient-{{ forloop.index }}" type="checkbox"><span>{{ ingredient | escape }}</span></label></li>
+    {% if page.ingredient_groups.size > 0 %}
+      {% for group in page.ingredient_groups %}
+      <div class="ingredient-group"><h3>{{ group.name | escape }}</h3>
+      {% assign group_id = forloop.index %}
+      {% include ingredient-list.html items=group.items prefix=group_id %}
+      </div>
       {% endfor %}
-    </ul>
+    {% else %}
+      {% include ingredient-list.html items=page.ingredients prefix='main' %}
+    {% endif %}
   </section>
   <section class="recipe-method prose" aria-labelledby="steps-heading">
     <h2 id="steps-heading">Steps</h2>

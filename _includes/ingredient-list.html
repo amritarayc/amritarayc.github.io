@@ -1,0 +1,5 @@
+<ul class="ingredient-checklist">
+  {% for ingredient in include.items %}
+  <li><label for="ingredient-{{ include.prefix }}-{{ forloop.index }}"><input id="ingredient-{{ include.prefix }}-{{ forloop.index }}" type="checkbox"><span>{{ ingredient | escape }}</span></label></li>
+  {% endfor %}
+</ul>
