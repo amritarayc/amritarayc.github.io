@@ -43,7 +43,7 @@ defaults:
       path: ""
       type: recipes
     values:
-      layout: entry
+      layout: recipe
   - scope:
       path: ""
       type: hobbies

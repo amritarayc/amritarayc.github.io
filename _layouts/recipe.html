@@ -1,0 +1,55 @@
+---
+layout: default
+---
+<article class="page-shell post recipe">
+  <a class="back-link" href="{{ '/recipes/' | relative_url }}">← Back to the recipe box</a>
+  <header class="page-heading">
+    <span class="eyebrow">FROM MY RECIPE BOX</span>
+    <h1>{{ page.title | escape }}</h1>
+    {% if page.summary %}<p>{{ page.summary | escape }}</p>{% endif %}
+    <div class="recipe-details">
+      {% if page.serves %}<span>Serves {{ page.serves | escape }}</span>{% endif %}
+      {% if page.prep_minutes %}<span>Prep: {{ page.prep_minutes }} min</span>{% endif %}
+      {% if page.cook_minutes %}<span>Cook: {{ page.cook_minutes }} min</span>{% endif %}
+    </div>
+  </header>
+  {% if page.image %}
+  <figure class="recipe-cover">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title | escape }}">
+    {% if page.photo_credit %}<figcaption>Photo: {% if page.photo_credit_url %}<a href="{{ page.photo_credit_url | escape }}" target="_blank" rel="noopener noreferrer">{{ page.photo_credit | escape }}</a>{% else %}{{ page.photo_credit | escape }}{% endif %}</figcaption>{% endif %}
+  </figure>
+  {% else %}
+  <div class="recipe-photo-pending"><span class="handwritten">Photo to come</span></div>
+  {% endif %}
+  <section class="ingredients recipe-ingredients" aria-labelledby="ingredients-heading">
+    <div class="recipe-section-heading"><h2 id="ingredients-heading">Ingredients</h2><span class="handwritten">a little kitchen checklist</span></div>
+    {% if page.measurement_note %}<p class="measurement-note">{{ page.measurement_note | escape }}</p>{% endif %}
+    <ul class="ingredient-checklist">
+      {% for ingredient in page.ingredients %}
+      <li><label for="ingredient-{{ forloop.index }}"><input id="ingredient-{{ forloop.index }}" type="checkbox"><span>{{ ingredient | escape }}</span></label></li>
+      {% endfor %}
+    </ul>
+  </section>
+  <section class="recipe-method prose" aria-labelledby="steps-heading">
+    <h2 id="steps-heading">Steps</h2>
+    <ol class="recipe-steps">{% for step in page.steps %}<li>{{ step | escape }}</li>{% endfor %}</ol>
+  </section>
+  {% if page.source_tips.size > 0 %}
+  <section class="recipe-source-tips prose" aria-labelledby="source-tips-heading">
+    <h2 id="source-tips-heading">Notes from the original recipe</h2>
+    <ul>{% for tip in page.source_tips %}<li>{{ tip | escape }}</li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+  <section class="recipe-notes" aria-labelledby="notes-heading">
+    <h2 id="notes-heading">My notes & tips</h2>
+    {% if page.my_notes.size > 0 or page.my_tips.size > 0 %}
+    {% if page.my_notes.size > 0 %}<ul>{% for note in page.my_notes %}<li>{{ note | escape }}</li>{% endfor %}</ul>{% endif %}
+    {% if page.my_tips.size > 0 %}<h3>Little things that help</h3><ul>{% for tip in page.my_tips %}<li>{{ tip | escape }}</li>{% endfor %}</ul>{% endif %}
+    {% else %}<p class="handwritten">Room for notes after I’ve made this.</p>{% endif %}
+  </section>
+  {% if page.photos.size > 0 %}
+  <section class="recipe-photos" aria-labelledby="photos-heading"><h2 id="photos-heading">From my kitchen</h2><div class="kitchen-gallery">{% for photo in page.photos %}<figure><img src="{{ photo.src | relative_url }}" alt="{{ photo.alt | escape }}" loading="lazy">{% if photo.caption %}<figcaption>{{ photo.caption | escape }}</figcaption>{% endif %}</figure>{% endfor %}</div></section>
+  {% endif %}
+  {% if content != '' %}<div class="prose">{{ content }}</div>{% endif %}
+  {% if page.source_url %}<footer class="recipe-source"><span class="eyebrow">RECIPE TAKEN FROM</span><a href="{{ page.source_url | escape }}" target="_blank" rel="noopener noreferrer">{{ page.source_name | default: page.source_url | escape }} {% include arrow.html %}</a><p>Method rewritten for this recipe box.{% if page.measurement_note %} Measurements adapted to metric.{% endif %}</p></footer>{% endif %}
+</article>

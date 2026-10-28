@@ -76,3 +76,51 @@ bundle exec jekyll serve --destination /workspace/.cloud-setup/site/output --hos
 ```
 
 Use the repository config directly; the original onboarding Cayman override is no longer needed. For GitHub Pages, the site uses supported Jekyll collections and Liquid templates with no custom plugins or build step.
+
+## Recipe format
+
+Recipes now use their own layout automatically. Add a file to `_recipes/` with the following fields. This is a structure example, not a real recipe:
+
+```yaml
+---
+title: "Recipe name"
+date: 2026-10-27
+summary: "A brief description."
+serves: 4
+prep_minutes: 15
+cook_minutes: 30
+image: /assets/images/recipes/finished-dish.jpg
+image_alt: "Describe the dish in the photo."
+# Include photo credit if the image is not your own and you have permission to use it.
+photo_credit: "Photographer name"
+photo_credit_url: "https://example.com/original"
+measurement_note: "Weights converted from volume are approximate."
+ingredients:
+  - "500 g ingredient, prepared as described"
+  - "Salt, to taste"
+steps:
+  - "First step, in your own words."
+  - "Next step, with oven temperature and timing."
+source_tips: [] # Advice from the original recipe, shown separately
+my_notes: []
+my_tips: []
+photos: []
+source_name: "Original recipe author / website"
+source_url: "https://example.com/original-recipe"
+---
+```
+
+Ingredients get native, keyboard-accessible checkboxes. They reset on page reload. Use grams instead of cup measurements; conversions depend on the ingredient and should be marked approximate when the source gives no weight. Keep countable ingredients as counts, and oven temperatures in °C. Preserve whether weights refer to whole or prepared produce. Verify quantities and method against the original before adding an entry.
+
+`my_notes` and `my_tips` are lists of your own observations; do not fill them with an author's advice as if it were yours. Empty notes show a space for future observations. Source attribution is shown at the end. Use your own photos or images you have permission to publish; linking a recipe does not grant rights to its photography.
+
+To add your own pictures, upload files and replace `photos: []` with:
+
+```yaml
+photos:
+  - src: /assets/images/recipes/my-dish.jpg
+    alt: "My finished dish on a plate"
+    caption: "A note about this attempt."
+```
+
+Replace the cover with your own picture any time. Optional photos and notes are omitted or left empty until supplied. Content updates are made through these files; the public site has no visitor upload or editing form.
